@@ -1,4 +1,4 @@
-package DZ_1;
+package main.java.DZ_1;
 
 import java.util.*;
 
