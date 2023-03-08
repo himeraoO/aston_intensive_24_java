@@ -50,6 +50,15 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    public void trimToSize(){
+        if(size < arr.length){
+            if (size > 0){
+                arr = Arrays.copyOf(arr, size + 1);
+            }
+        }
+
+    }
+
     @Override
     public boolean remove(Object o) {
         int i;
@@ -184,65 +193,63 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+//        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
+//        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+//        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+//        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return null;
+//        return null;
+        throw new UnsupportedOperationException();
     }
     
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+//        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+//        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public ListIterator<E> listIterator() {
-        return null;
+//        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        return null;
+//        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public List<E> subList(int fromIndex, int toIndex) {
-        return null;
+//        return null;
+        throw new UnsupportedOperationException();
     }
 }
