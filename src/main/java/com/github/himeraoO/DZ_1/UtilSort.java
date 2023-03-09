@@ -1,4 +1,4 @@
-package main.java.DZ_1;
+package com.github.himeraoO.DZ_1;
 
 import java.util.Comparator;
 import java.util.List;
