@@ -15,6 +15,7 @@ public class MyArrayListTest {
         boolean added = integerMyArrayList.add(1);
         int sizeAfter = integerMyArrayList.size();
         Assertions.assertEquals(sizeBefore, 0);
+        Assertions.assertTrue(added);
         Assertions.assertEquals(1, integerMyArrayList.get(0));
         Assertions.assertEquals(sizeAfter, 1);
 
@@ -143,6 +144,38 @@ public class MyArrayListTest {
 
         Integer rem = integerMyArrayList.remove(0);
         Assertions.assertEquals(0, rem);
+    }
+
+    @Test
+    void indexOf() {
+    }
+
+    @Test
+    void lastIndexOf() {
+    }
+
+    @Test
+    void contains() {
+    }
+
+    @Test
+    void toArray() {
+    }
+
+    @Test
+    void clear() {
+    }
+
+    @Test
+    void testToString() {
+    }
+
+    @Test
+    void get() {
+    }
+
+    @Test
+    void set() {
     }
 
 }
