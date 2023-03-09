@@ -19,6 +19,11 @@ public class MyArrayList<E> implements List<E> {
     private int size;
 
     /**
+     * Дефолтное значение размера внутреннего массива
+     */
+    private static final int DEFAULT_CAPACITY = 10;
+
+    /**
      * Конструктор, принимает значение
      * @param cap и инициализирует этим значением внутренний массив arr[]
      * size устанавливается в 0 и
@@ -40,7 +45,7 @@ public class MyArrayList<E> implements List<E> {
      * и инициализируется значение 10, по умолчанию
      */
     public MyArrayList() {
-        this(10);
+        this(DEFAULT_CAPACITY);
     }
 
     /**
