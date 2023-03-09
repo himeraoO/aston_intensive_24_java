@@ -311,7 +311,7 @@ public class MyArrayList<E> implements List<E> {
      * @param to позиция до которой будет проводиться сортировка
      * @param c компаратор для сортировки
      */
-    public void quickSort(int from, int to, Comparator<? super E> c) {
+    private void quickSort(int from, int to, Comparator<? super E> c) {
         if (to - from > 0) {
             int partition = partition(from, to, c);
             quickSort(from, partition - 1, c);
@@ -358,7 +358,7 @@ public class MyArrayList<E> implements List<E> {
      * @param el1 индекс первого элемента
      * @param el2 индекс второго элемента
      */
-    public void swap(int el1, int el2) {
+    private void swap(int el1, int el2) {
         E temp = (E) arr[el1];
         arr[el1] = arr[el2];
         arr[el2] = temp;
