@@ -2,8 +2,29 @@ package main.java.DZ_1;
 
 import java.util.*;
 
+/**
+ * Реализация ArrayList
+ * @param <E> тип элементов, которые будут содержаться в ArrayList
+ * @author himeraoO Вадим Виноградов
+ */
 public class MyArrayList<E> implements List<E> {
+    /**
+     * Внутренний массив для хранения данных
+     */
+    private Object arr[];
 
+    /**
+     * Размер ArrayList
+     */
+    private int size;
+
+    /**
+     * Конструктор, принимает значение
+     * @param cap и инициализирует этим значением внутренний массив arr[]
+     * size устанавливается в 0
+     * может выбросить исключение
+     * @RuntimeException если размер будет задан меньше 0
+     */
     public MyArrayList(int cap) {
         if (cap < 0) {
             throw new RuntimeException("Размер не может быть меньше 0");
@@ -12,24 +33,38 @@ public class MyArrayList<E> implements List<E> {
         size = 0;
     }
 
+    /**
+     * Конструктор по умолчанию
+     * вызывает внутри в себя
+     * @see  #MyArrayList(int cap)
+     * и инициализируется значение 10, по умолчанию
+     */
     public MyArrayList() {
         this(10);
     }
 
-    private Object arr[];
-
-    private int size;
-
+    /**
+     * @return возвращает количество элементов, {@code int}
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * возвращает boolean, проверяя есть элементы или нет
+     * @return {@code true} - если элементов нет
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    /**
+     * Метод добавление элементов
+     * @param e - элемент который добавляется
+     * @return {@code true} если элемент добавлен
+     */
     @Override
     public boolean add(E e) {
         if ((arr.length - 1) == size) {
@@ -40,6 +75,10 @@ public class MyArrayList<E> implements List<E> {
         return true;
     }
 
+    /**
+     * Вспомогательный метод, который изменяет размер внутреннего массива
+     * происходит увеличение в 1.5 раза от исходного
+     */
     private void arrayResizing() {
         int oldCap = arr.length;
         if (oldCap > 0) {
@@ -50,15 +89,23 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Метод позволяющий уменьшить размер черезмерно большого внутреннего массива
+     * относительно количества используемых элементов
+     */
     public void trimToSize() {
         if (size < arr.length) {
             if (size > 0) {
                 arr = Arrays.copyOf(arr, size + 1);
             }
         }
-
     }
 
+    /**
+     * метод удаления элемента по значению
+     * @param o элемент который будет удаляться
+     * @return @{code true} если элемент удален
+     */
     @Override
     public boolean remove(Object o) {
         int i;
@@ -78,6 +125,12 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * метод удаления элемента по индексу
+     * @param index индекс элемента который будет удаляться
+     * @return элемент который был удален
+     * @throws IndexOutOfBoundsException, если @{code index} находится за пределами внутреннего массива
+     */
     @Override
     public E remove(int index) {
         if ((index >= 0) && (index < size)) {
@@ -92,6 +145,11 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Метод позволяет получить индекс первого найденного елемента
+     * @param o элемент, индекс которого необходимо найти
+     * @return @{int}, @{-1} - если элемент не найден
+     */
     @Override
     public int indexOf(Object o) {
         int index = -1;
@@ -104,6 +162,11 @@ public class MyArrayList<E> implements List<E> {
         return index;
     }
 
+    /**
+     * Метод позволяет получить индекс последнего найденного елемента
+     * @param o элемент, индекс которого необходимо найти
+     * @return @{int}, @{-1} - если элемент не найден
+     */
     @Override
     public int lastIndexOf(Object o) {
         int index = -1;
@@ -116,6 +179,11 @@ public class MyArrayList<E> implements List<E> {
         return index;
     }
 
+    /**
+     * Метод позволяющий проверить, содержиться ли передаваемый элемент в коллекции или нет
+     * @param o передаваемый элемент
+     * @return @{true} если элемент найден
+     */
     @Override
     public boolean contains(Object o) {
         for (int i = 0; i < size; i++) {
@@ -126,11 +194,18 @@ public class MyArrayList<E> implements List<E> {
         return false;
     }
 
+    /**
+     * Метод позволяет получить содержимое коллекции в виде массива
+     * @return элементы коллекции в виде массива
+     */
     @Override
     public Object[] toArray() {
         return Arrays.copyOfRange(arr, 0, size);
     }
 
+    /**
+     * Метод очищает коллекцию
+     */
     @Override
     public void clear() {
         for (int i = 0; i < size; i++) {
@@ -139,6 +214,9 @@ public class MyArrayList<E> implements List<E> {
         size = 0;
     }
 
+    /**
+     * @return строковое представление коллекции
+     */
     @Override
     public String toString() {
 
@@ -159,6 +237,12 @@ public class MyArrayList<E> implements List<E> {
         return sb.toString();
     }
 
+    /**
+     * Метод позволяет получить элемент коллекции по индексу
+     * @param index элемента в коллекции
+     * @return элемент коллекции
+     * @throws IndexOutOfBoundsException,  если @{code index} находится за пределами внутреннего массива
+     */
     @Override
     public E get(int index) {
         if ((index >= 0) && (index < (size))) {
@@ -168,6 +252,13 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Метод позволяет изменить элемент коллекции по индексу
+     * @param index элемента который необходимо заменить в коллекции
+     * @param element которым заменяют старый элемент по индексу
+     * @return элемент коллекции который был заменен
+     * @throws IndexOutOfBoundsException, если @{code index} находится за пределами внутреннего массива
+     */
     @Override
     public E set(int index, E element) {
         if ((index >= 0) && (index < (size))) {
@@ -179,6 +270,13 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Метод добавления элемента в середину коллекции
+     * при добавлении, все элементы справа смещаются на 1 позицию
+     * @param index позиция в которую будет добавлен новый элемент
+     * @param element элемент который добавляется
+     * @throws IndexOutOfBoundsException, если @{code index} находится за пределами внутреннего массива
+     */
     @Override
     public void add(int index, E element) {
         if ((index >= 0) && (index < (size))) {
@@ -193,11 +291,21 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Метод для сортировки коллекции (quicksort)
+     * @param c компаратор для сортировки
+     */
     @Override
     public void sort(Comparator<? super E> c) {
         quickSort(0, size - 1, c);
     }
 
+    /**
+     * Реализация сортировки quicksort
+     * @param from позиция с которой будет проводиться сортировка
+     * @param to позиция до которой будет проводиться сортировка
+     * @param c компаратор для сортировки
+     */
     public void quickSort(int from, int to, Comparator<? super E> c) {
         if (to - from > 0) {
             int partition = partition(from, to, c);
@@ -206,20 +314,31 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Метод в котором непосредственно происходит сортировка
+     * @param from позиция с которой будет проводиться сортировка
+     * @param to позиция до которой будет проводиться сортировка
+     * @param c компаратор для сортировки
+     * @return позицию int элемента для следущей разбивки массива для сортировки
+     */
     private int partition(int from, int to, Comparator<? super E> c) {
+        //опорный элемент
         E pivot = (E) arr[from + (to - from) / 2];
+        //левый индекс
         int li = from;
+        //правый индекс
         int ri = to;
-        while (li < ri) {
 
+        while (li < ri) {
+            //смещение левого индекса
             while (c.compare((E) arr[li], pivot) < 0) {
                 li++;
             }
-
+            //смещение правого индекса
             while ((ri > 0) && ((c.compare((E) arr[ri], pivot)) > 0)) {
                 ri--;
             }
-
+            //проверка для изменения положения элементов
             if (li <= ri) {
                 swap(li, ri);
                 li++;
@@ -229,6 +348,11 @@ public class MyArrayList<E> implements List<E> {
         return li;
     }
 
+    /**
+     * Метод для изменения положения элементов
+     * @param el1 индекс первого элемента
+     * @param el2 индекс второго элемента
+     */
     public void swap(int el1, int el2) {
         E temp = (E) arr[el1];
         arr[el1] = arr[el2];
