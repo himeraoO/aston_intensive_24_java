@@ -189,38 +189,6 @@ public class MyArrayListTest {
     }
 
     @Test
-    void indexOf() {
-    }
-
-    @Test
-    void lastIndexOf() {
-    }
-
-    @Test
-    void contains() {
-    }
-
-    @Test
-    void toArray() {
-    }
-
-    @Test
-    void clear() {
-    }
-
-    @Test
-    void testToString() {
-    }
-
-    @Test
-    void get() {
-    }
-
-    @Test
-    void set() {
-    }
-
-    @Test
     void sort() {
 
         ArrayList<String> arrayList = new ArrayList<>();
@@ -293,7 +261,231 @@ public class MyArrayListTest {
         });
 
         Assertions.assertEquals("[2, 5, 8, 10, 11, 12, 14, 31, 45, 45]", myArrayList2.toString());
+    }
 
+    @Test
+    void indexOf() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        Assertions.assertEquals("[a, v, e, a, c, h, m, a, w, b]", myArrayList.toString());
+
+        String element = "a";
+        int elementIndex = 0;
+        String element2 = "z";
+        int indexNotFound = -1;
+
+        int index = myArrayList.indexOf(element);
+
+        Assertions.assertEquals(index, elementIndex);
+
+        int index2 = myArrayList.indexOf(element2);
+
+        Assertions.assertEquals(index2, indexNotFound);
+    }
+
+    @Test
+    void lastIndexOf() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        Assertions.assertEquals("[a, v, e, a, c, h, m, a, w, b]", myArrayList.toString());
+
+        String element = "a";
+        int elementIndex = 7;
+        String element2 = "z";
+        int indexNotFound = -1;
+
+        int index = myArrayList.lastIndexOf(element);
+
+        Assertions.assertEquals(index, elementIndex);
+
+        int index2 = myArrayList.indexOf(element2);
+
+        Assertions.assertEquals(index2, indexNotFound);
+    }
+
+    @Test
+    void contains() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        Assertions.assertEquals("[a, v, e, a, c, h, m, a, w, b]", myArrayList.toString());
+
+        String element = "a";
+        String element2 = "c";
+        String element3 = "z";
+
+        boolean found1 = myArrayList.contains(element);
+        Assertions.assertTrue(found1);
+
+        boolean found2 = myArrayList.contains(element2);
+        Assertions.assertTrue(found2);
+
+        boolean found3 = myArrayList.contains(element3);
+        Assertions.assertFalse(found3);
+
+    }
+
+    @Test
+    void toArray() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        Object[] arr = myArrayList.toArray();
+
+        Assertions.assertTrue(arr.getClass().isArray());
+        Assertions.assertEquals("[a, v, e, a, c, h, m, a, w, b]", Arrays.toString(arr));
+
+    }
+
+    @Test
+    void clear() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        int sizeBefore = myArrayList.size();
+        Assertions.assertEquals(10, sizeBefore);
+
+        myArrayList.clear();
+
+        int sizeAfter = myArrayList.size();
+        Assertions.assertEquals(0, sizeAfter);
+
+        Assertions.assertEquals("[]", myArrayList.toString());
+    }
+
+    @Test
+    void testToString() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        Assertions.assertEquals("[a, v, e, a, c, h, m, a, w, b]", myArrayList.toString());
+    }
+
+    @Test
+    void get() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        Assertions.assertEquals("[a, v, e, a, c, h, m, a, w, b]", myArrayList.toString());
+
+        String element1 = "a";
+        int elementIndex1 = 3;
+        String element2 = "e";
+        int elementIndex2 = 2;
+
+        String foundElement1 = myArrayList.get(elementIndex1);
+
+        Assertions.assertEquals(element1, foundElement1);
+
+        String foundElement2 = myArrayList.get(elementIndex2);
+
+        Assertions.assertEquals(element2, foundElement2);
+    }
+
+    @Test
+    void set() {
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+
+        myArrayList.add("a");
+        myArrayList.add("v");
+        myArrayList.add("e");
+        myArrayList.add("a");
+        myArrayList.add("c");
+        myArrayList.add("h");
+        myArrayList.add("m");
+        myArrayList.add("a");
+        myArrayList.add("w");
+        myArrayList.add("b");
+
+        Assertions.assertEquals("[a, v, e, a, c, h, m, a, w, b]", myArrayList.toString());
+
+        String newElement1 = "a";
+        String elementBefore1 = "v";
+        int elementIndex1 = 1;
+
+        String changedElement1 = myArrayList.set(elementIndex1, newElement1);
+        Assertions.assertEquals(changedElement1, elementBefore1);
+        Assertions.assertEquals("[a, a, e, a, c, h, m, a, w, b]", myArrayList.toString());
+
+        String newElement2 = "v";
+        String elementBefore2 = "c";
+        int elementIndex2 = 4;
+
+        String changedElement2 = myArrayList.set(elementIndex2, newElement2);
+        Assertions.assertEquals(changedElement2, elementBefore2);
+        Assertions.assertEquals("[a, a, e, a, v, h, m, a, w, b]", myArrayList.toString());
     }
 
 }

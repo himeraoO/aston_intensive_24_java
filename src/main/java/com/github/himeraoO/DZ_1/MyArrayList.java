@@ -446,6 +446,11 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
+    /**
+     * Метод для удаления группы элементов
+     * @param c - коллекция элементов для удаления
+     * @return @{true} если удален хотя бы 1 элемент
+     */
     @Override
     public boolean removeAll(Collection<?> c) {
         if (c.isEmpty()) {
