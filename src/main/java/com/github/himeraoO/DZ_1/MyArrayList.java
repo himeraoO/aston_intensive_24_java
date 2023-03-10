@@ -25,7 +25,6 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Конструктор, принимает значение
-     *
      * @param cap и инициализирует этим значением внутренний массив arr[]
      *            size устанавливается в 0 и
      *            может выбросить исключение
@@ -42,7 +41,6 @@ public class MyArrayList<E> implements List<E> {
     /**
      * Конструктор по умолчанию
      * вызывает внутри в себя
-     *
      * @see #MyArrayList(int cap)
      * и инициализируется значение 10, по умолчанию
      */
@@ -50,6 +48,10 @@ public class MyArrayList<E> implements List<E> {
         this(DEFAULT_CAPACITY);
     }
 
+    /**
+     * Конструктор, принимает значение
+     * @param c - коллекция, которая добавится при инициализации класса
+     */
     public MyArrayList(Collection<? extends E> c) {
         Object[] objects = c.toArray();
         int length = objects.length;
