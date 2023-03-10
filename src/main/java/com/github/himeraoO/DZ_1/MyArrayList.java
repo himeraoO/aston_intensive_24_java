@@ -50,6 +50,14 @@ public class MyArrayList<E> implements List<E> {
         this(DEFAULT_CAPACITY);
     }
 
+    public MyArrayList(Collection<? extends E> c) {
+        Object[] objects = c.toArray();
+        int length = objects.length;
+        arr = new Object[length];
+        System.arraycopy(objects, 0, arr, 0, length);
+        size = length;
+    }
+
     /**
      * @return возвращает количество элементов, {@code int}
      */
@@ -161,6 +169,7 @@ public class MyArrayList<E> implements List<E> {
     @Override
     public E remove(int index) {
         if ((index >= 0) && (index < size)) {
+            @SuppressWarnings("unchecked")
             E value = (E) arr[index];
             System.arraycopy(arr, index + 1, arr, index, size - index - 1);
             size--;
@@ -277,7 +286,9 @@ public class MyArrayList<E> implements List<E> {
     @Override
     public E get(int index) {
         if ((index >= 0) && (index < (size))) {
-            return (E) arr[index];
+            @SuppressWarnings("unchecked")
+            E result = (E) arr[index];
+            return result;
         } else {
             throw new IndexOutOfBoundsException("Индекс " + index + " выходит за пределы размера " + size);
         }
@@ -294,6 +305,7 @@ public class MyArrayList<E> implements List<E> {
     @Override
     public E set(int index, E element) {
         if ((index >= 0) && (index < (size))) {
+            @SuppressWarnings("unchecked")
             E oldValue = (E) arr[index];
             arr[index] = element;
             return oldValue;
@@ -359,6 +371,7 @@ public class MyArrayList<E> implements List<E> {
      */
     private int partition(int from, int to, Comparator<? super E> c) {
         //опорный элемент
+        @SuppressWarnings("unchecked")
         E pivot = (E) arr[from + (to - from) / 2];
         //левый индекс
         int li = from;
@@ -391,6 +404,7 @@ public class MyArrayList<E> implements List<E> {
      * @param el2 индекс второго элемента
      */
     private void swap(int el1, int el2) {
+        @SuppressWarnings("unchecked")
         E temp = (E) arr[el1];
         arr[el1] = arr[el2];
         arr[el2] = temp;
